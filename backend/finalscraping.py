@@ -1,4 +1,3 @@
-#pip install lxml, psycopg2, requests, bs4
 import psycopg2, requests
 from bs4 import BeautifulSoup
 try:
@@ -35,16 +34,12 @@ try:
     "https://infogob.jne.gob.pe/Localidad/Peru/moquegua_procesos-electorales_6%2b%400ElOxMA%3d%3d1%40",
     "https://infogob.jne.gob.pe/Localidad/Peru/tacna_procesos-electorales_rtoGjYiUciM%3doY",
     "https://infogob.jne.gob.pe/Localidad/Peru/callao_procesos-electorales_ewhD5iRlGbk%3dhi"]
-    
-    j=1
+
     for url in urls:
         result = requests.get(url)
         src = result.content
         soup = BeautifulSoup(src, 'lxml')
-        #j=1
-        
 
-        
         links = soup.find_all("input")
         for link in links:
             if link.attrs['id']==("TxRegion"):
@@ -61,46 +56,28 @@ try:
         count = cursor.rowcount
         print (count, "Record inserted successfully into table")
 
-            
 
 
-        
-        
-        postgres_insert_query = """ INSERT INTO gobiernoapp_politician (poli_name, job, region) VALUES (%s,%s,%s)""" #owner_id
+        postgres_insert_query = """ INSERT INTO gobiernoapp_politician (poli_name, job, region) VALUES (%s,%s,%s)"""
         fulllist = soup.find_all('tr')
         i=2
         while (i<(len(fulllist))):
             tag = soup.find_all('tr')[i]
             tag2 = tag.find_all('td') [0]
             tag3 = tag.find_all('td') [1]
-            #number = i-1
-            #number = 1
-            #record_to_insert = (str(tag3.text), str(tag2.text), 1)
             record_to_insert = (str(tag3.text), str(tag2.text), region)
             cursor.execute(postgres_insert_query, record_to_insert)
             connection.commit()
             count = cursor.rowcount
             print (count, "Record inserted successfully into table")
             i+=1
-        j+=1
-    
+
 
 
 except (Exception, psycopg2.Error) as error :
     print ("Error while connecting to PostgreSQL", error)
 finally:
-    #closing database connection.
         if(connection):
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
-
-
-
-
-
-
-
-
-
-

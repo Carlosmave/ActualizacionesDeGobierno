@@ -74,26 +74,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Gobierno.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'gobierno2',
-#         'USER': 'postgres',
-#         'PASSWORD': '281094',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5433',
-#     }
-# }
 
 DATABASES = {
     'default': {
@@ -146,6 +126,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ORIGIN_WHITELIST = [
-#     "http://localhost:3000",
-# ]

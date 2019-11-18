@@ -32,16 +32,9 @@ class PoliticianDetail extends React.Component {
   }
 
 
-  // <CustomForm
-  //   requestType="post"
-  //   politicianID=puttheidhere
-  //   commentID={null}/>
-
   render() {
     return(
       <div>
-
-
         <CustomForm
           politicianID={this.props.match.params.politicianID} />
         <br />
@@ -58,5 +51,3 @@ class PoliticianDetail extends React.Component {
 }
 
 export default PoliticianDetail
-
-// <h2 style={{marginLeft:'20px'}}>Crear un comentario</h2>

@@ -19,6 +19,4 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     path('', include('gobiernoapp.urls')),
-    # path('admin/', admin.site.urls),
-    # path('gobiernoapp/', include('gobiernoapp.urls')),
 ]
