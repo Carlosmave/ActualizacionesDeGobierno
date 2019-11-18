@@ -1,7 +1,7 @@
-﻿Actualizaciones de Gobierno
+﻿## Actualizaciones de Gobierno
 
-## Available Scripts
 
-In the project directory, you can run:
+
+Muestra información sobre las regiones y autoridades del Perú.
 
 
