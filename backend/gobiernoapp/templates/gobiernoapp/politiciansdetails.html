@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- PAGE settings -->
+  <title>Politico - {{politician.poli_name}}</title>
+  <meta name="description" content="Tu página sobre el Mundial de la FIFA Rusia 2018">
+  <meta name="keywords" content="Mundialitis mundial rusia 2018 fifa proyecto software juegos">
+
+  <!-- CSS dependencies -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <!-- Script: Make my navbar transparent when the document is scrolled to top -->
+</head>
+
+<body style="overflow-x: hidden;">
+
+
+
+
+<!-- Cover -->
+<div class="align-items-center d-flex cover py-5 russianflagstyle">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 align-self-center text-lg-left text-center">
+        <h1 class="mb-0 mt-5 display-4"><b>{{politician.poli_name}}</b></h1>
+        <p class="mb-5">Puesto: {{politician.job}}</p>
+        <p class="mb-5">Region: {{politician.region}}</p>
+      </div>
+      <div class="col-lg-5 p-3">
+
+      <p class="mb-5">Escribir comentario</p>
+        <form class="modal-content animate" method="post"> {% csrf_token %}
+          <div class="container"> <!--<div class="container" style="text-align: center !important;">-->
+            <label for="comment"><b>Comentario</b></label>
+            <input name="comment" id="comment" class="form-control" type="text" placeholder="Ingrese el comentario" required>
+            <button name="createcomment" type="submit" class="btn mt-4 btn-block p-2 btn-success">Crear</button>
+          </div>
+        </form>
+        <br>
+
+
+          <div class="card" style="width: auto;">
+            <div class="card-header">Comentarios</div>
+            <ul class="list-group list-group-flush">
+              <!--{#% for tlobby in tlobbies %#}-->
+              {% for comment in comments %}
+                 <li class="list-group-item">{{comment.comm_content}}<br>
+                   Likes: <button class="btn mt-4 btn-block p-2 btn-danger" onclick="location.href='likes/{{ comment.id }}'" type="button">{{comment.likes}}</button><br>
+                   Dislikes: <button class="btn mt-4 btn-block p-2 btn-danger" onclick="location.href='dislikes/{{ comment.id }}'" type="button">{{comment.dislikes}}</button><br>
+
+                   <!-- {{likeslist}}<br>{{dislikeslist}}</li> -->
+                 <!-- <li class="list-group-item"><a href="/politiciansdetails/{{politician.id}}">{{politician.poli_name}}<br>{{politician.job}}</a></li> -->
+              {% endfor %}
+            </ul>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  <!-- JavaScript dependencies -->
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- Script: Smooth scrolling between anchors in the same page -->
+  <script></script>
+</body>
+
+</html>
