@@ -13,14 +13,14 @@ class RegionDetail extends React.Component {
 
   componentDidMount() {
     const regionID = this.props.match.params.regionID;
-    axios.get(`http://127.0.0.1:8000/regionsdetails/${regionID}`)
+    axios.get(`http://127.0.0.1:8000/regionsdetails/${regionID}/`)
         .then(res => {
             this.setState({
               politicians: res.data
             });
             console.log(res.data);
         })
-    axios.get(`http://127.0.0.1:8000/regions/${regionID}`)
+    axios.get(`http://127.0.0.1:8000/regions/${regionID}/`)
         .then(res => {
             this.setState({
               region: res.data

@@ -15,14 +15,14 @@ class PoliticianDetail extends React.Component {
 
   componentDidMount() {
     const politicianID = this.props.match.params.politicianID;
-    axios.get(`http://127.0.0.1:8000/politiciansdetails/${politicianID}`)
+    axios.get(`http://127.0.0.1:8000/politiciansdetails/${politicianID}/`)
         .then(res => {
             this.setState({
               comments: res.data
             });
             console.log(res.data);
         })
-    axios.get(`http://127.0.0.1:8000/politicians/${politicianID}`)
+    axios.get(`http://127.0.0.1:8000/politicians/${politicianID}/`)
         .then(res => {
             this.setState({
               politician: res.data

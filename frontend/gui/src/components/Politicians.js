@@ -12,7 +12,7 @@ const Politicians = (props) => {
         <List.Item style={{border: '1px solid rgb(235, 237, 240)', textAlign:'center'}}>
           <List.Item.Meta
             style={{marginLeft:'20px'}}
-            title={<a href={`/politicians/${item.id}`}>{item.poli_name}</a>}
+            title={<a href={`/politicians/${item.id}/`}>{item.poli_name}</a>}
             description={"Puesto: " + item.job}
           />
         </List.Item>
