@@ -21,27 +21,12 @@ class CommentList(viewsets.ReadOnlyModelViewSet):
     serializer_class = CommentSerializer
 
 
-
-# class RegionDetail(viewsets.ReadOnlyModelViewSet): ##funcionaria tanto para region como para province
-#     serializer_class = PoliticianSerializer
-#     def get_queryset(self):
-#        id = self.kwargs['id']
-#        #region = Region.objects.get(id=id)
-#        return Politician.objects.all().filter(location_id=id)
-
 class LocationPoliticians(viewsets.ReadOnlyModelViewSet):
     serializer_class = PoliticianSerializer
     def get_queryset(self):
        id = self.kwargs['id']
        return Politician.objects.all().filter(location_id=id)
 
-
-# class ProvinceDetail(viewsets.ReadOnlyModelViewSet):
-#     serializer_class = PoliticianSerializer
-#     def get_queryset(self):
-#        id = self.kwargs['id']
-#        region = Region.objects.get(id=id)
-#        return Province.objects.all().filter(region=region.reg_name)
 
 class RegionProvinces(viewsets.ReadOnlyModelViewSet):
     serializer_class = ProvinceSerializer
