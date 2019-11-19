@@ -11,10 +11,21 @@ class Region(models.Model):
         verbose_name_plural = "Regions"
         ordering = ['reg_name']
 
+class Province(models.Model):
+    prov_name = models.CharField(max_length=500)
+    authority = models.CharField(max_length=500)
+    region = models.CharField(max_length=500)
+    def __str__(self):
+        return self.prov_name
+    class Meta:
+        verbose_name_plural = "Provinces"
+        ordering = ['prov_name']
+
 class Politician(models.Model):
     poli_name = models.CharField(max_length=500)
     job = models.CharField(max_length=500)
-    region = models.CharField(max_length=500)
+    location_id = models.IntegerField()
+    photo_url = models.CharField(max_length=500)
     def __str__(self):
         return self.poli_name
     class Meta:

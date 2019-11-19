@@ -1,5 +1,5 @@
-from .models import Region, Politician, Comment
-from .serializers import RegionSerializer, PoliticianSerializer, CommentSerializer
+from .models import Region, Province, Politician, Comment
+from .serializers import RegionSerializer, ProvinceSerializer, PoliticianSerializer, CommentSerializer
 from rest_framework import viewsets
 
 # Create your views here.
@@ -7,6 +7,10 @@ from rest_framework import viewsets
 class RegionList(viewsets.ReadOnlyModelViewSet):
     queryset = Region.objects.all()
     serializer_class = RegionSerializer
+
+class ProvinceList(viewsets.ReadOnlyModelViewSet):
+    queryset = Province.objects.all()
+    serializer_class = ProvinceSerializer
 
 class PoliticianList(viewsets.ReadOnlyModelViewSet):
     queryset = Politician.objects.all()
@@ -16,12 +20,35 @@ class CommentList(viewsets.ReadOnlyModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
-class RegionDetail(viewsets.ReadOnlyModelViewSet):
+
+
+# class RegionDetail(viewsets.ReadOnlyModelViewSet): ##funcionaria tanto para region como para province
+#     serializer_class = PoliticianSerializer
+#     def get_queryset(self):
+#        id = self.kwargs['id']
+#        #region = Region.objects.get(id=id)
+#        return Politician.objects.all().filter(location_id=id)
+
+class LocationPoliticians(viewsets.ReadOnlyModelViewSet):
     serializer_class = PoliticianSerializer
     def get_queryset(self):
        id = self.kwargs['id']
+       return Politician.objects.all().filter(location_id=id)
+
+
+# class ProvinceDetail(viewsets.ReadOnlyModelViewSet):
+#     serializer_class = PoliticianSerializer
+#     def get_queryset(self):
+#        id = self.kwargs['id']
+#        region = Region.objects.get(id=id)
+#        return Province.objects.all().filter(region=region.reg_name)
+
+class RegionProvinces(viewsets.ReadOnlyModelViewSet):
+    serializer_class = ProvinceSerializer
+    def get_queryset(self):
+       id = self.kwargs['id']
        region = Region.objects.get(id=id)
-       return Politician.objects.all().filter(region=region.reg_name)
+       return Province.objects.all().filter(region=region.reg_name)
 
 
 class PoliticianDetail(viewsets.ModelViewSet):
@@ -31,7 +58,7 @@ class PoliticianDetail(viewsets.ModelViewSet):
        return Comment.objects.all().filter(poli_id=id)
     def perform_create(self, serializer):
         serializer.save(poli_id=self.kwargs['id'])
-        
+
 
 class CommentDetail(viewsets.ModelViewSet):
     serializer_class = CommentSerializer

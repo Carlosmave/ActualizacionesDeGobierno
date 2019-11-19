@@ -15,6 +15,15 @@ const Politicians = (props) => {
             title={<a href={`/politicians/${item.id}/`}>{item.poli_name}</a>}
             description={"Puesto: " + item.job}
           />
+
+
+            <img style={{marginRight: 20}}
+              width={100}
+              height={140}
+              alt="foto"
+              src={item.photo_url}
+            />
+
         </List.Item>
       )}
     />

@@ -23,7 +23,7 @@ class CustomForm extends React.Component {
           style={{
             border: '1px solid rgb(235, 237, 240)',
           }}>
-          <h2 style={{marginLeft:'20px', marginTop:'10px'}}>Crear un comentario</h2>
+          <h2 style={{marginLeft:'20px', marginTop:'10px'}}>Publicar un comentario</h2>
           <Form.Item style={{marginLeft:'20px'}} label="Comentario">
             <Input name="comment" placeholder="Ingrese su comentario" />
           </Form.Item>
